@@ -6,7 +6,7 @@
     <url>https://www.blynk.cc/</url>
     <description>
         Blynk - platform with iOs and Android apps to control Arduino,
-        Raspberry Pi and similar micro-controllers boards over Internet.
+        Raspberry Pi and similar microcontrollers boards over Internet.
     </description>
     <organization>
         <name>Blynk Inc.</name>
@@ -14,7 +14,7 @@
     </organization>
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/josafa2018/blink-server/issues</url>
+        <url>https://github.com/Josafa2018/blynk-server-legacy/issues</url>
     </issueManagement>
 
     <groupId>cc.blynk</groupId>
@@ -23,9 +23,9 @@
     <packaging>pom</packaging>
 
     <scm>
-        <url>https://github.com/josafa2018/blink-server.git</url>
-        <connection>scm:git:ssh://git@github.com/josafa2018/blink-server.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/josafa2018/blink-server.git</developerConnection>
+        <url>https://github.com/Josafa2018/blynk-server-legacy.git</url>
+        <connection>scm:git:ssh://git@github.com/Josafa2018/blynk-server-legacy.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/Josafa2018/blynk-server-legacy.git</developerConnection>
         <tag>v0.41.17-SNAPSHOT</tag>
     </scm>
 
@@ -45,23 +45,6 @@
         <module>client</module>
         <module>integration-tests</module>
     </modules>
-
-    <!-- for QR gen tool -->
-    <distributionManagement>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-            <layout>default</layout>
-        </repository>
-    </distributionManagement>
-
-    <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
 
     <profiles>
         <profile>
@@ -90,7 +73,6 @@
                 <epoll.os>linux-x86_64</epoll.os>
             </properties>
         </profile>
-
     </profiles>
 
     <build>
@@ -122,7 +104,7 @@
                 <version>${maven-checkstyle-plugin.version}</version>
                 <configuration>
                     <configLocation>checkstyle.xml</configLocation>
-                    <encoding>UTF-8</encoding>
+                    <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
                     <linkXRef>false</linkXRef>
@@ -152,13 +134,30 @@
         </resources>
     </build>
 
+    <!-- for QR gen tool -->
+    <distributionManagement>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+            <layout>default</layout>
+        </repository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+
     <properties>
         <!-- maven plugins -->
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
         <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
-        <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
-        <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
+        <maven-surefire-plugin.version>2.8.1</maven-surefire-plugin.version>
+        <maven-checkstyle-plugin.version>3.2.0</maven-checkstyle-plugin.version>
 
         <!-- dependencies -->
         <netty.version>4.1.63.Final</netty.version>
@@ -201,11 +200,13 @@
             <artifactId>log4j-api</artifactId>
             <version>${log4j2.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j2.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
@@ -234,6 +235,5 @@
         </dependency>
 
     </dependencies>
-
 
 </project>
